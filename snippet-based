@@ -580,3 +580,590 @@ d) "123" and null
 
 Answer: c
 Explanation: transient fields are not serialized, so upon deserialization, they get their default value (null for objects). static fields belong to the class, not the object. They are not serialized with the object, but when the object is deserialized in the JVM, it accesses the current static value present in the loaded class ("Admin").
+
+176. What will be the output of the following exception handling snippet?
+
+```
+public class Main {
+    @SuppressWarnings("finally")
+    public static int compute() {
+        try {
+            throw new RuntimeException("Try Failed");
+        } finally {
+            return 10;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.print(compute());
+    }
+}
+```
+
+a) RuntimeException is thrown
+b) 10
+c) Compilation Error
+d) 0
+
+Answer: b
+Explanation: If a finally block contains a return statement, it abruptly terminates the method. Any exception thrown in the try or catch block is completely suppressed (swallowed) and the value from the finally block is returned.
+
+---
+
+177. Evaluate the following String pooling scenario:
+
+```
+public class StringTest {
+    public static void main(String[] args) {
+        String s1 = "Hello";
+        String s2 = "World";
+        String s3 = "HelloWorld";
+        String s4 = s1 + s2;
+        System.out.print(s3 == s4);
+    }
+}
+```
+
+a) true
+b) false
+c) Compilation Error
+d) RuntimeException
+
+Answer: b
+Explanation: String concatenation involving variables (s1 + s2) happens at runtime and creates a new String object on the heap. s3 points to the String Pool literal. Therefore, their memory addresses are different.
+
+---
+
+178. What happens when compiling this Java 8+ interface snippet?
+
+```
+interface DefaultTest {
+    default String toString() {
+        return "DefaultTest Interface";
+    }
+}
+```
+
+a) It compiles and can be used by implementing classes.
+b) Compilation Error
+c) RuntimeException
+d) It compiles but cannot be executed.
+
+Answer: b
+Explanation: Compilation Error. An interface cannot provide a default implementation for any of the methods belonging to java.lang.Object (like toString, equals, hashCode). This is by design to prevent ambiguity in multiple inheritance.
+
+---
+
+179. What is the output of the following Collections snippet?
+
+```
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Set<Integer> set = new TreeSet<>();
+        set.add(null);
+        System.out.print("Added");
+    }
+}
+```
+
+a) Added
+b) Compilation Error
+c) NullPointerException
+d) IllegalArgumentException
+
+Answer: c
+Explanation: TreeSet relies on comparing elements to sort them. Because null cannot be compared to other elements (it lacks a compareTo method), attempting to add null to a TreeSet immediately throws a NullPointerException.
+
+---
+
+180. What is the output of this Generics code?
+
+```
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        List<String> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        System.out.print(list1.getClass() == list2.getClass());
+    }
+}
+```
+
+a) true
+b) false
+c) Compilation Error
+d) ClassCastException
+
+Answer: a
+Explanation: Due to Type Erasure, generic type parameters (<String> and <Integer>) are removed at runtime. Both list1 and list2 are simply instances of java.util.ArrayList.class.
+
+---
+
+181. Evaluate the behavior of the following static block:
+
+```
+public class Main {
+    static {
+        int x = 1 / 0;
+    }
+    public static void main(String[] args) {
+        System.out.print("Hello");
+    }
+}
+```
+
+a) Hello
+b) ArithmeticException
+c) ExceptionInInitializerError
+d) Compilation Error
+
+Answer: c
+Explanation: If an unchecked exception (like ArithmeticException here) is thrown inside a static initialization block, the JVM wraps it in an ExceptionInInitializerError and class loading fails. The main method is never reached.
+
+---
+
+182. What is the output of this overloading scenario involving varargs?
+
+```
+public class Main {
+    void show(int... a) { System.out.print("Varargs "); }
+    void show(int[] a) { System.out.print("Array "); }
+    
+    public static void main(String[] args) {
+        new Main().show(1, 2, 3);
+    }
+}
+```
+
+a) Varargs
+b) Array
+c) Compilation Error
+d) Both methods are executed
+
+Answer: c
+Explanation: Compilation error due to duplicate methods. In Java, varargs (int... a) and an array (int[] a) are treated as having the exact same method signature by the compiler. You cannot overload methods this way.
+
+---
+
+183. Identify the output of this code with a labeled break:
+
+```
+public class Main {
+    public static void main(String[] args) {
+        http://www.google.com
+        System.out.println("Success");
+    }
+}
+```
+
+a) Success
+b) Compilation Error (Invalid Syntax)
+c) RuntimeException (Unknown Protocol)
+d) NetworkException
+
+Answer: a
+Explanation: This perfectly valid Java code! http: is parsed as a label identifier. //www.google.com is parsed as a standard single-line comment. The code prints "Success".
+
+---
+
+184. What happens in this inheritance and exception handling code?
+
+```
+import java.io.IOException;
+class Parent {
+    Parent() throws IOException { }
+}
+class Child extends Parent {
+    Child() { }
+}
+```
+
+a) Compiles successfully
+b) Compilation Error
+c) IOException at runtime
+d) ClassNotFoundException
+
+Answer: b
+Explanation: The child class constructor implicitly calls super(). Since the parent constructor throws a checked exception (IOException), the child constructor must also declare to throw IOException (or a broader exception like Exception) to handle it.
+
+---
+
+185. What will the Map size be?
+
+```
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("A", "One");
+        map.put(new String("A"), "Two");
+        System.out.print(map.size() + " " + map.get("A"));
+    }
+}
+```
+
+a) 2 One
+b) 2 Two
+c) 1 One
+d) 1 Two
+
+Answer: d
+Explanation: HashMap uses the equals() and hashCode() methods of the keys to determine uniqueness. Since "A".equals(new String("A")) is true, the second put operation simply overwrites the value of the existing key.
+
+---
+
+186. Evaluate the wrapper class behavior:
+
+```
+public class Main {
+    static void change(Integer x) {
+        x = 20;
+    }
+    public static void main(String[] args) {
+        Integer y = 10;
+        change(y);
+        System.out.print(y);
+    }
+}
+```
+
+a) 20
+b) 10
+c) Compilation Error
+d) NullPointerException
+
+Answer: b
+Explanation: Wrapper classes (like Integer, String) are strictly immutable. When x = 20 executes, a new Integer object is created and assigned to the local reference x. The original reference y remains unchanged and still points to 10.
+
+---
+
+187. Identify the output regarding variable hiding vs overriding:
+
+```
+class A { static int i = 1; }
+class B extends A { static int i = 2; }
+
+public class Main {
+    public static void main(String[] args) {
+        A obj = new B();
+        System.out.print(obj.i);
+    }
+}
+```
+
+a) 1
+b) 2
+c) Compilation Error
+d) 0
+
+Answer: a
+Explanation: Variables do not exhibit polymorphism in Java. Variable hiding relies entirely on the reference type (which is A), not the runtime object instance type.
+
+---
+
+188. What is the output of the following Java 8 Stream snippet?
+
+```
+import java.util.stream.Stream;
+public class Main {
+    public static void main(String[] args) {
+        boolean match = Stream.empty().allMatch(e -> false);
+        System.out.print(match);
+    }
+}
+```
+
+a) false
+b) true
+c) NullPointerException
+d) IllegalArgumentException
+
+Answer: b
+Explanation: In logic and mathematics, evaluating "all" on an empty set results in a concept known as vacuous truth. The allMatch method on an empty stream always evaluates to true, regardless of the predicate.
+
+---
+
+189. What happens when calling methods on abstract classes?
+
+```
+abstract class AbstractTest {
+    AbstractTest() {
+        System.out.print("Abstract ");
+    }
+}
+class Concrete extends AbstractTest {
+    Concrete() {
+        System.out.print("Concrete");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        new Concrete();
+    }
+}
+```
+
+a) Concrete
+b) Compilation Error (Abstract classes can't have constructors)
+c) Abstract Concrete
+d) RuntimeException
+
+Answer: c
+Explanation: Even though abstract classes cannot be directly instantiated via new, they absolutely can have constructors. These constructors are called automatically via super() when a concrete subclass is instantiated.
+
+---
+
+190. What is the output of this collection removal trick?
+
+```
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3));
+        list.remove(new Integer(2));
+        System.out.print(list);
+    }
+}
+```
+
+a) [1, 2, 3]
+b) [1, 3]
+c) [1, 2]
+d) IndexOutOfBoundsException
+
+Answer: b
+Explanation: List has two overloaded remove methods: remove(int index) and remove(Object o). Passing new Integer(2) explicitly calls the remove(Object o) method, removing the value 2, not the element at index 2.
+
+---
+
+191. Identify the output related to Unboxing edge cases:
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Integer x = null;
+        switch (x) {
+            case 1: System.out.print("One"); break;
+            default: System.out.print("Default");
+        }
+    }
+}
+```
+
+a) Default
+b) Compilation Error
+c) One
+d) NullPointerException
+
+Answer: d
+Explanation: When passing a wrapper class (Integer) to a switch statement, Java implicitly unboxes it by calling x.intValue(). Since x is null, calling intValue() throws a NullPointerException.
+
+---
+
+192. What will be the output of the following math operation?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        System.out.print(Math.abs(Integer.MIN_VALUE));
+    }
+}
+```
+
+a) 2147483648
+b) 2147483647
+c) -2147483648
+d) Compilation Error
+
+Answer: c
+Explanation: The range of an int is -2,147,483,648 to 2,147,483,647. Because of Two's Complement representation, the absolute value of Integer.MIN_VALUE cannot be represented as a positive int. It overflows and remains -2147483648.
+
+---
+
+193. What is the output demonstrating array initialization behaviors?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        String[] arr = new String[5];
+        System.out.print(arr[0].length());
+    }
+}
+```
+
+a) 0
+b) 5
+c) Compilation Error
+d) NullPointerException
+
+Answer: d
+Explanation: When an array of Objects (like String) is initialized, all slots are populated with null by default. Attempting to call .length() on arr[0] invokes a method on a null reference.
+
+---
+
+194. What is the output of the following nested exception scenario?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        try {
+            throw new Error();
+        } catch (Exception e) {
+            System.out.print("Caught Exception");
+        } finally {
+            System.out.print("Finally ");
+        }
+    }
+}
+```
+
+a) Caught Exception Finally
+b) Finally (followed by StackTrace for Error)
+c) Compilation Error
+d) Caught Exception
+
+Answer: b
+Explanation: Error does not inherit from Exception. Therefore, the catch (Exception e) block ignores it. The finally block executes, printing "Finally", and then the unhandled Error crashes the thread.
+
+---
+
+195. Identify the behavior of daemon threads:
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Thread t = new Thread(() -> {
+            while (true) { }
+        });
+        t.setDaemon(true);
+        t.start();
+        System.out.print("Done");
+    }
+}
+```
+
+a) Program prints "Done" and hangs indefinitely.
+b) Program prints "Done" and terminates.
+c) IllegalThreadStateException
+d) Compilation Error
+
+Answer: b
+Explanation: Daemon threads run in the background. The JVM automatically exits when the only threads running are daemon threads. Because the main (user) thread finishes immediately after printing "Done", the JVM terminates, killing the infinite loop in the daemon thread.
+
+---
+
+196. What happens if a lambda attempts to alter an outer variable?
+
+```
+import java.util.function.*;
+public class Main {
+    public static void main(String[] args) {
+        int counter = 0;
+        Supplier<Integer> increment = () -> ++counter;
+        System.out.print(increment.get());
+    }
+}
+```
+
+a) 1
+b) 0
+c) Compilation Error
+d) RuntimeException
+
+Answer: c
+Explanation: Local variables referenced inside a lambda expression must be final or "effectively final". Attempting to modify counter inside the lambda (++counter) breaks this rule and causes a compilation error.
+
+---
+
+197. Evaluate the following Double Brace Initialization syntax:
+
+```
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<String>() {{
+            add("A");
+            add("B");
+        }};
+        System.out.print(list.size() + " " + list.getClass().getSimpleName());
+    }
+}
+```
+
+a) 2 ArrayList
+b) Compilation Error
+c) 2 (empty string because it's an anonymous class)
+d) 0 ArrayList
+
+Answer: c
+Explanation: Double brace initialization actually creates an anonymous subclass of ArrayList and uses an instance initializer block to add items. Because it is an anonymous class, .getSimpleName() returns an empty string.
+
+---
+
+198. What is the output involving method references?
+
+```
+import java.util.function.*;
+public class Main {
+    public static void main(String[] args) {
+        Supplier<String> s = String::new;
+        System.out.print(s.get().length());
+    }
+}
+```
+
+a) 0
+b) 1
+c) Compilation Error
+d) NullPointerException
+
+Answer: a
+Explanation: String::new refers to the no-args constructor of the String class, which creates an empty string "". The length of an empty string is 0.
+
+---
+
+199. What will be the output regarding loop labels?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        outer: for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == 1) continue outer;
+                System.out.print(i + "" + j + " ");
+            }
+        }
+    }
+}
+```
+
+a) 00 01 02 10 11 12 20 21 22
+b) 00 01 02 20 21 22
+c) 00 11 22
+d) Compilation Error
+
+Answer: b
+Explanation: The continue outer; statement immediately halts the inner loop when i == 1 and pushes control to the next iteration of the outer loop. Therefore, no prints happen when i is 1.
+
+---
+
+200. Identify the output related to Java variable arguments (varargs):
+
+```
+public class Main {
+    static void test(Integer... args) { System.out.print("A"); }
+    static void test(int... args) { System.out.print("B"); }
+    
+    public static void main(String[] args) {
+        test();
+    }
+}
+```
+
+a) A
+b) B
+c) Compilation Error
+d) RuntimeException
+
+Answer: c
+Explanation: A call to test() passes zero arguments. The compiler cannot decide whether to invoke the empty Integer... array or the empty int... array. It throws a compilation error due to an ambiguous method call.
