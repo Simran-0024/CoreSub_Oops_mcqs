@@ -911,5 +911,496 @@ Answer: c
 
 
 
+---
 
+55. Which OOP principle ensures data security by restricting direct access?
+a) Abstraction
+b) Encapsulation
+c) Inheritance
+d) Polymorphism
 
+Answer: b
+
+---
+
+56. Which concept is used to achieve runtime polymorphism in Java?
+a) Method Overloading
+b) Method Overriding
+c) Constructor Overloading
+d) Static Binding
+
+Answer: b
+
+---
+
+57. What is the main purpose of using an interface in Java?
+a) To provide implementation
+b) To achieve multiple inheritance
+c) To store data
+d) To create objects
+
+Answer: b
+
+---
+
+58. Which keyword is used to refer to the current object in Java?
+a) super
+b) this
+c) current
+d) self
+
+Answer: b
+
+---
+
+59. Which memory area stores objects in Java?
+a) Stack
+b) Heap
+c) Method Area
+d) Register
+
+Answer: b
+
+---
+
+60. What type of inheritance is supported through interfaces in Java?
+a) Single
+b) Multilevel
+c) Multiple
+d) Hierarchical
+
+Answer: c
+
+---
+
+61. Which method is used for shallow cloning in Java?
+a) copy()
+b) clone()
+c) duplicate()
+d) shallowCopy()
+
+Answer: b
+
+---
+
+62. What is required to use clone() method in Java?
+a) Serializable interface
+b) Cloneable interface
+c) Runnable interface
+d) Comparable interface
+
+Answer: b
+
+---
+
+63. Which type of copy creates independent objects?
+a) Shallow copy
+b) Deep copy
+c) Reference copy
+d) Null copy
+
+Answer: b
+
+---
+
+64. What happens if an object has no reference?
+a) It crashes program
+b) It stays forever
+c) Garbage Collector deletes it
+d) It becomes static
+
+Answer: c
+
+---
+
+65. Which of the following supports method overloading?
+a) Same method name with different parameters
+b) Same method name and parameters
+c) Different method names
+d) Same return type only
+
+Answer: a
+
+---
+
+66. What is dynamic method dispatch?
+a) Compile-time binding
+b) Runtime method call resolution
+c) Static method calling
+d) Constructor execution
+
+Answer: b
+
+---
+
+67. Which relationship represents "has-a" relationship?
+a) Inheritance
+b) Association
+c) Composition
+d) Both b and c
+
+Answer: d
+
+---
+
+68. Which is a strong "has-a" relationship?
+a) Association
+b) Aggregation
+c) Composition
+d) Inheritance
+
+Answer: c
+
+---
+
+69. What is the role of Garbage Collector?
+a) Create objects
+b) Destroy classes
+c) Free unused memory
+d) Execute methods
+
+Answer: c
+
+---
+
+70. Which type of constructor takes parameters?
+a) Default
+b) Copy
+c) Parameterized
+d) Static
+
+Answer: c
+
+---
+
+71. Which binding occurs at runtime?
+a) Early binding
+b) Static binding
+c) Late binding
+d) Compile binding
+
+Answer: c
+
+---
+
+72. Which of the following is NOT stored in stack memory?
+a) Local variables
+b) Method calls
+c) Objects
+d) References
+
+Answer: c
+
+---
+
+73. Which Java feature allows behavior sharing without ambiguity?
+a) Multiple classes
+b) Interfaces
+c) Packages
+d) Threads
+
+Answer: b
+
+---
+
+74. Which type of inheritance is NOT supported in Java using classes?
+a) Single
+b) Multilevel
+c) Multiple
+d) Hierarchical
+
+Answer: c
+
+---
+
+75. Which keyword prevents method overriding?
+a) static
+b) final
+c) private
+d) protected
+
+Answer: b
+
+---
+
+76. What is the output decided at runtime called?
+a) Static binding
+b) Compile-time polymorphism
+c) Runtime polymorphism
+d) Early execution
+
+Answer: c
+
+---
+
+77. Which of the following is NOT a main feature of OOPs?
+a) Encapsulation
+b) Polymorphism
+c) Exception
+d) Abstraction
+
+Answer: c
+Explanation: Exception handling is a mechanism in Java, not a core pillar of OOP.
+
+---
+
+78. Which superclass member will NOT be accessible to the subclass?
+a) Public member
+b) Protected member
+c) Private member
+d) All of the mentioned
+
+Answer: c
+Explanation: Private members are restricted to the class they are defined in and cannot be accessed by subclasses.
+
+---
+
+79. Which among the following functions best represents the concept of Polymorphism?
+a) Class member function
+b) Virtual function
+c) Inline function
+d) Undefined function
+
+Answer: b
+Explanation: Virtual functions enable runtime polymorphism by allowing method overriding in subclasses.
+
+---
+
+80. Which language supports classes but does NOT support the concept of Polymorphism?
+a) C++
+b) Java
+c) Ada
+d) C#
+
+Answer: c
+Explanation: Ada supports object-oriented features like classes but does not support polymorphism fully.
+
+---
+
+81. Can C language be used to demonstrate Polymorphism?
+a) True
+b) False
+
+Answer: b
+Explanation: C is a procedural language and does not support OOP concepts like polymorphism natively.
+
+---
+
+82. Which OOP language does NOT support all types of inheritance?
+a) Smalltalk
+b) Kotlin
+c) Java
+d) C++
+
+Answer: c
+Explanation: Java does not support multiple inheritance through classes to avoid ambiguity; it uses interfaces instead.
+
+---
+
+83. Which among the following does NOT show Polymorphism?
+a) Static member function
+b) Constructor overloading
+c) Member function overloading
+d) Global member function
+
+Answer: a
+Explanation: Static member functions are bound at compile time and are not associated with any object, so they do not demonstrate polymorphism.
+
+---
+
+84. Which programming paradigm focuses on WHAT to execute rather than HOW?
+a) Imperative programming
+b) Object-oriented programming
+c) Declarative programming
+d) Parallel programming
+
+Answer: c
+Explanation: Declarative programming defines the logic without specifying the detailed control flow.
+
+---
+
+85. Which programming paradigm breaks a task into subtasks and executes them simultaneously?
+a) Procedural programming
+b) Functional programming
+c) Logical programming
+d) Parallel programming
+
+Answer: d
+Explanation: Parallel programming focuses on executing multiple subtasks at the same time to improve efficiency.
+
+---
+
+86. Which programming paradigm is based on formal logic and facts?
+a) Functional programming
+b) Logical programming
+c) Database programming
+d) Procedural programming
+
+Answer: b
+Explanation: Logical programming uses a set of sentences expressing facts and rules to solve problems.
+
+---
+
+87. Which of the following correctly describes structured programming?
+a) Programming with no control flow
+b) Programming with defined blocks like if/else, loops, and subroutines
+c) Programming only using objects
+d) Programming using only functions
+
+Answer: b
+Explanation: Structured programming uses defined control flow structures like conditionals, loops, and subroutines.
+
+---
+
+88. How much memory does a class occupy?
+a) Depends on number of methods
+b) Depends on number of variables
+c) Zero — classes are just blueprints
+d) Fixed 4 bytes always
+
+Answer: c
+Explanation: Classes themselves consume no memory; memory is allocated only when objects are created from them.
+
+---
+
+89. When is it NOT necessary to create an object from a class?
+a) When the class has abstract methods
+b) When the class has only static methods
+c) When the class is inherited
+d) When the class has a constructor
+
+Answer: b
+Explanation: Static methods can be called directly using the class name without creating an object.
+
+---
+
+90. Which of the following is the correct definition of encapsulation from a data-binding perspective?
+a) Hiding all data from the user permanently
+b) Binding data members and methods together as a single unit
+c) Separating data from methods
+d) Storing data in separate files
+
+Answer: b
+Explanation: Encapsulation binds data members and methods together, protecting data from outside interference.
+
+---
+
+91. In multiple inheritance in C++, in what order are base class constructors called?
+a) Right to left
+b) Random order
+c) Left to right order of inheritance
+d) Only the first base class constructor is called
+
+Answer: c
+Explanation: In C++, when a derived class is instantiated, base class constructors are called from left to right as specified in the inheritance list.
+
+---
+
+92. What is the main reason Java does not support multiple inheritance through classes?
+a) To save memory
+b) To avoid the diamond problem and ambiguity
+c) To improve speed
+d) To simplify constructors
+
+Answer: b
+Explanation: Multiple inheritance through classes can lead to ambiguity, so Java uses interfaces to achieve it safely.
+
+---
+
+93. What is a major limitation of inheritance?
+a) It prevents code reuse
+b) Base and child classes become tightly coupled
+c) It removes polymorphism
+d) It does not support encapsulation
+
+Answer: b
+Explanation: Inheritance creates tight coupling between parent and child classes, making changes in one affect the other.
+
+---
+
+94. In OOP, which approach is followed — top-down or bottom-up?
+a) Top-down
+b) Bottom-up
+c) Left-right
+d) Random
+
+Answer: b
+Explanation: OOP follows a bottom-up approach, unlike structured programming which follows a top-down approach.
+
+---
+
+95. What will be the output of the following Java program?
+
+```
+public class Demo{
+   public static void main(String[] arr){
+         System.out.println("Main1");
+   }
+   public static void main(String arr){
+         System.out.println("Main2");
+   }
+}
+```
+
+a) Main2
+b) Main1 and Main2 both
+c) Main1
+d) Compilation Error
+
+Answer: c
+Explanation: JVM only recognizes the main method with a String[] argument; the overloaded version with String is ignored.
+
+---
+
+96. What is the significance of a virtual base class in C++?
+a) It increases the size of the derived class
+b) It prevents multiple copies of a base class in diamond inheritance
+c) It removes all constructors
+d) It makes all methods static
+
+Answer: b
+Explanation: A virtual base class ensures only one copy of the base class exists in the hierarchy, solving the diamond problem.
+
+---
+
+97. Which of the following is true about a static block in Java?
+a) It runs after the main method
+b) It runs only when an object is created
+c) It runs before the main method
+d) It runs only once per object
+
+Answer: c
+Explanation: Static blocks are executed when the class is loaded, before the main method is called.
+
+---
+
+98. Which of the following best describes the "has-a" relationship vs "is-a" relationship in OOP?
+a) "is-a" is composition, "has-a" is inheritance
+b) "is-a" is inheritance, "has-a" is composition or association
+c) Both are the same
+d) "has-a" is abstraction, "is-a" is encapsulation
+
+Answer: b
+Explanation: "is-a" represents inheritance (a Dog is an Animal), while "has-a" represents composition (a Car has an Engine).
+
+---
+
+99. Which of the following is the correct definition of a destructor?
+a) A method that initializes an object
+b) A method that copies an object
+c) A method that frees resources when an object is destroyed
+d) A method that overloads operators
+
+Answer: c
+Explanation: Destructors are automatically called when an object goes out of scope to release memory and resources.
+
+---
+
+100. What is the key difference between a class and a structure?
+a) A structure supports abstraction; a class does not
+b) A class is stored in stack memory; a structure in heap memory
+c) A class supports data abstraction; a structure does not
+d) Both are identical in all languages
+
+Answer: c
+Explanation: Classes support data abstraction and other OOP features more strongly, while structures are simpler and generally stored in stack memory.
