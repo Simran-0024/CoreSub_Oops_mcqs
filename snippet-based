@@ -1,0 +1,582 @@
+151. What will be the output of the following Java 8 code resolving the "Diamond Problem"?
+
+```
+interface A { 
+    default void show() { System.out.print("A"); } 
+}
+interface B { 
+    default void show() { System.out.print("B"); } 
+}
+class C implements A, B {
+    public void show() { 
+        A.super.show(); 
+    }
+    public static void main(String[] args) { 
+        new C().show(); 
+    }
+}
+```
+
+a) A
+b) B
+c) AB
+d) Compilation Error
+
+Answer: a
+Explanation: When a class implements multiple interfaces with the same default method, it must override the method to resolve the ambiguity. Using InterfaceName.super.methodName() allows the class to explicitly call a specific interface's implementation.
+
+---
+
+152. What will be the output of the following try-with-resources snippet?
+
+```
+class Resource implements AutoCloseable {
+    public void close() { System.out.print("Close "); }
+}
+public class Main {
+    public static void main(String[] args) {
+        try (Resource r = new Resource()) {
+            System.out.print("Try ");
+            throw new Exception();
+        } catch (Exception e) {
+            System.out.print("Catch ");
+        }
+    }
+}
+```
+
+a) Try Catch Close
+b) Try Catch
+c) Try Close Catch
+d) Compilation Error
+
+Answer: c
+Explanation: In a try-with-resources block, the resources are closed automatically before the catch or finally blocks are executed.
+
+---
+
+153. Evaluate the output of the following String manipulation:
+
+```
+public class StringTest {
+    public static void main(String[] args) {
+        String s1 = new String("Java");
+        String s2 = s1.intern();
+        String s3 = "Java";
+        System.out.print((s1 == s2) + " " + (s2 == s3));
+    }
+}
+```
+
+a) false false
+b) true true
+c) false true
+d) true false
+
+Answer: c
+Explanation: s1 is created in the heap. s1.intern() returns the string from the String Pool, so s2 points to the pool. s3 is a literal, so it also points to the same object in the pool as s2. Thus, s1 == s2 is false, and s2 == s3 is true.
+
+---
+
+154. What is the output of the following Collection snippet?
+
+```
+public class MapTest {
+    public static void main(String[] args) {
+        Map<Integer, String> map = new IdentityHashMap<>();
+        Integer a = new Integer(10);
+        Integer b = new Integer(10);
+        map.put(a, "One");
+        map.put(b, "Two");
+        System.out.print(map.size());
+    }
+}
+```
+
+a) 1
+b) 2
+c) 0
+d) RuntimeException
+
+Answer: b
+Explanation: Unlike HashMap which uses .equals() to compare keys, IdentityHashMap uses reference equality (==). Since a and b are created using new Integer(), they are distinct objects in memory, resulting in two separate entries.
+
+---
+
+155. Which overloaded method is invoked by the compiler?
+
+```
+class Test {
+    void go(long n) { System.out.print("Long "); }
+    void go(Integer n) { System.out.print("Integer "); }
+    void go(int... n) { System.out.print("Varargs "); }
+    
+    public static void main(String[] args) {
+        int i = 5;
+        new Test().go(i);
+    }
+}
+```
+
+a) Long
+b) Integer
+c) Varargs
+d) Compilation Error
+
+Answer: a
+Explanation: In Java method overloading resolution, widening (int to long) beats boxing (int to Integer), and boxing beats varargs.
+
+---
+
+156. What happens when compiling the following inheritance snippet?
+
+```
+class Parent {
+    static void print() { System.out.print("Parent"); }
+}
+class Child extends Parent {
+    void print() { System.out.print("Child"); }
+}
+```
+
+a) Compiles and Child hides the Parent method
+b) Compilation Error
+c) Compiles and Child overrides the Parent method
+d) RuntimeException
+
+Answer: b
+Explanation: An instance method in a subclass cannot override a static method in a superclass. Attempting to do so results in a compilation error. (Similarly, a static method cannot hide an instance method).
+
+---
+
+157. What is the output of the following Stream operation?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1, 2, 3);
+        list.stream().peek(System.out::print);
+    }
+}
+```
+
+a) 123
+b) Compilation Error
+c) 1 2 3
+d) Nothing is printed
+
+Answer: d
+Explanation: Streams in Java are evaluated lazily. Because there is no terminal operation (like .collect() or .forEach()) at the end of the pipeline, the intermediate operation (peek) is never executed.
+
+---
+
+158. What will be returned by the following method?
+
+```
+int testMethod() {
+    try { 
+        return 1; 
+    } catch (Exception e) { 
+        return 2; 
+    } finally { 
+        return 3; 
+    }
+}
+```
+
+a) 1
+b) 2
+c) 3
+d) Compilation Error due to unreachable code
+
+Answer: c
+Explanation: If a finally block contains a return statement, it will override any return statement executed in the try or catch blocks.
+
+---
+
+159. What happens if a lambda expression accesses a local variable that is modified later?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        int x = 10;
+        Runnable r = () -> System.out.print(x);
+        x = 20;
+        r.run();
+    }
+}
+```
+
+a) 10
+b) 20
+c) Compilation Error
+d) RuntimeException
+
+Answer: c
+Explanation: Local variables referenced from a lambda expression must be final or "effectively final" (never modified after initialization). Modifying x to 20 breaks this rule, causing a compilation error at the lambda definition.
+
+---
+
+160. What is the output demonstrating pass-by-value in Java?
+
+```
+public class Main {
+    static void modify(StringBuilder sb) {
+        sb.append("World");
+        sb = new StringBuilder("Java");
+    }
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        modify(sb);
+        System.out.print(sb);
+    }
+}
+```
+
+a) Hello
+b) HelloWorld
+c) Java
+d) HelloWorldJava
+
+Answer: b
+Explanation: Java is strictly pass-by-value. The reference to the object is passed by value. Modifying the state of the object (sb.append) affects the original object. However, reassigning the reference (sb = new...) only changes the local copy of the reference, not the original.
+
+---
+
+161. Identify the output of the following concurrency code:
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Object obj = new Object();
+        try {
+            obj.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+a) The thread waits indefinitely
+b) Compilation Error
+c) IllegalMonitorStateException
+d) NullPointerException
+
+Answer: c
+Explanation: The wait(), notify(), and notifyAll() methods must be called from within a synchronized context (the current thread must own the object's monitor). Calling them outside throws an IllegalMonitorStateException.
+
+---
+
+162. How does the compiler resolve this overloaded method call with null?
+
+```
+public class Test {
+    void show(String s) { System.out.print("String"); }
+    void show(Object o) { System.out.print("Object"); }
+    
+    public static void main(String[] args) {
+        new Test().show(null);
+    }
+}
+```
+
+a) String
+b) Object
+c) Compilation Error due to ambiguity
+d) NullPointerException
+
+Answer: a
+Explanation: When passing null, the compiler selects the most specific method applicable. Since String is a subclass of Object, it is more specific, so show(String) is invoked.
+
+---
+
+163. What will happen in the following finally block scenario?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.print("Try ");
+            System.exit(0);
+        } finally {
+            System.out.print("Finally ");
+        }
+    }
+}
+```
+
+a) Try Finally
+b) Try
+c) Compilation Error
+d) RuntimeException
+
+Answer: b
+Explanation: System.exit(0) terminates the Java Virtual Machine immediately. Therefore, the finally block is bypassed and never executed.
+
+---
+
+164. What is the behavior of static methods inside an interface (Java 8+)?
+
+```
+interface MyInterface {
+    static void display() { System.out.print("Interface"); }
+}
+class MyClass implements MyInterface {
+    public static void main(String[] args) {
+        display();
+    }
+}
+```
+
+a) Interface
+b) Compilation Error
+c) RuntimeException
+d) MyClass
+
+Answer: b
+Explanation: Static methods in interfaces are NOT inherited by implementing classes. They can only be called using the interface name itself, i.e., MyInterface.display().
+
+---
+
+165. What does the put method return in a HashMap?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Map<Integer, String> map = new HashMap<>();
+        System.out.print(map.put(1, "A") + " ");
+        System.out.print(map.put(1, "B"));
+    }
+}
+```
+
+a) null null
+b) true true
+c) null A
+d) A B
+
+Answer: c
+Explanation: The put() method returns the previous value associated with the key. If there was no mapping for the key, it returns null.
+
+---
+
+166. What happens if a switch statement evaluates a null string?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        String str = null;
+        switch (str) {
+            case "null": System.out.print("String null"); break;
+            default: System.out.print("Default");
+        }
+    }
+}
+```
+
+a) String null
+b) Default
+c) Compilation Error
+d) NullPointerException
+
+Answer: d
+Explanation: The switch statement uses the hashCode() and equals() methods under the hood for Strings. Calling these on a null reference results in a NullPointerException before any cases are evaluated.
+
+---
+
+167. What is true about overriding a method with a different return type?
+
+```
+class A { }
+class B extends A { }
+
+class Parent {
+    A get() { return new A(); }
+}
+class Child extends Parent {
+    B get() { return new B(); }
+}
+```
+
+a) Compilation Error, return types must strictly match
+b) It compiles successfully due to covariant return types
+c) Compilation Error, overloading occurs instead of overriding
+d) RuntimeException
+
+Answer: b
+Explanation: Java supports covariant return types. An overriding method in a subclass can return a subtype of the return type declared in the overridden method of the superclass.
+
+---
+
+168. What will be the output regarding the instanceof operator?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        String s = null;
+        System.out.print((s instanceof String) + " " + (s instanceof Object));
+    }
+}
+```
+
+a) true true
+b) true false
+c) false false
+d) NullPointerException
+
+Answer: c
+Explanation: The instanceof operator always returns false if the object being tested is null, without throwing a NullPointerException.
+
+---
+
+169. Identify the output regarding exception hierarchies:
+
+```
+public class Main {
+    public static void main(String[] args) {
+        try {
+            throw new Error();
+        } catch (Exception e) {
+            System.out.print("Exception ");
+        } catch (Throwable t) {
+            System.out.print("Throwable ");
+        }
+    }
+}
+```
+
+a) Exception
+b) Throwable
+c) Compilation Error
+d) The program crashes
+
+Answer: b
+Explanation: Error and Exception are both subclasses of Throwable. Error does not inherit from Exception, so the Exception catch block ignores it, and it is caught by the broader Throwable catch block.
+
+---
+
+170. Which generic declaration correctly implements PECS (Producer Extends, Consumer Super)?
+a) List<? extends Number> list = new ArrayList<Integer>(); list.add(10);
+b) List<? super Integer> list = new ArrayList<Number>(); list.add(10);
+c) List<? extends Integer> list = new ArrayList<Number>();
+d) List<? super Number> list = new ArrayList<Integer>();
+
+Answer: b
+Explanation: According to PECS, use super when you only need to put values into a collection (Consumer). List<? super Integer> can point to an ArrayList of Number or Object, and it is perfectly safe to add(10) to it. Option A fails because you cannot add() to an extends wildcard.
+
+---
+
+171. What will be the output of this static block initialization?
+
+```
+class Parent {
+    static { System.out.print("1"); }
+}
+class Child extends Parent {
+    static final int x = 10;
+    static { System.out.print("2"); }
+}
+public class Main {
+    public static void main(String[] args) {
+        System.out.print(Child.x);
+    }
+}
+```
+
+a) 1210
+b) 210
+c) 10
+d) 110
+
+Answer: c
+Explanation: Child.x is a static final primitive variable (a compile-time constant). Accessing it does not trigger class loading or static block execution for either Child or Parent.
+
+---
+
+172. Evaluate the output of Optional behavior:
+
+```
+public class Main {
+    static String getBackup() {
+        System.out.print("Backup");
+        return "Guest";
+    }
+    public static void main(String[] args) {
+        String name = "Admin";
+        String res = Optional.ofNullable(name).orElse(getBackup());
+        System.out.print(res);
+    }
+}
+```
+
+a) Admin
+b) BackupAdmin
+c) Guest
+d) BackupGuest
+
+Answer: b
+Explanation: orElse() evaluates its argument eagerly. Even though the Optional contains "Admin" (and won't use the default value), getBackup() is still executed, printing "Backup" before "Admin" is returned and printed. (To prevent eager evaluation, orElseGet() with a supplier should be used).
+
+---
+
+173. What is the output of the array type mismatch?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        Object[] arr = new String[2];
+        arr[0] = "Java";
+        arr[1] = 10; 
+        System.out.print(arr[0]);
+    }
+}
+```
+
+a) Java
+b) Compilation Error
+c) ArrayStoreException
+d) ClassCastException
+
+Answer: c
+Explanation: Although an array of String can be assigned to an Object[] reference (array covariance), the runtime type of the array is still String[]. Attempting to put an Integer (10) into it throws an ArrayStoreException at runtime.
+
+---
+
+174. What is true about constructor definitions for Enums?
+
+```
+enum Status {
+    SUCCESS, FAILED;
+    public Status() { }
+}
+```
+
+a) Compiles successfully
+b) Compilation Error
+c) RuntimeException
+d) SUCCESS will be printed twice
+
+Answer: b
+Explanation: Enum constructors are always implicitly private. You cannot explicitly define an enum constructor with a public or protected access modifier, doing so results in a compilation error.
+
+---
+
+175. What is the output of the following serialization code concept?
+
+```
+class User implements Serializable {
+    transient String password = "123";
+    static String role = "Admin";
+}
+// Assume object is serialized then deserialized into newUser
+```
+
+What will be the values of newUser.password and newUser.role after deserialization?
+a) "123" and "Admin"
+b) null and null
+c) null and "Admin"
+d) "123" and null
+
+Answer: c
+Explanation: transient fields are not serialized, so upon deserialization, they get their default value (null for objects). static fields belong to the class, not the object. They are not serialized with the object, but when the object is deserialized in the JVM, it accesses the current static value present in the loaded class ("Admin").
