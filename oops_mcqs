@@ -1,0 +1,915 @@
+.............................................//////..............................................
+
+1. Which is not a feature of OOP in general definitions?
+a) Efficient Code
+b) Code reusability
+c) Modularity
+d) Duplicate/Redundant data
+
+Answer: d
+Explanation: Duplicate/Redundant data is dependent on programmer and hence can't be guaranteed by OOP. Code reusability is done using inheritance. Modularity is supported by using different code files and classes. Codes are more efficient because of features of OOP.
+
+---
+
+2. Which was the first purely object oriented programming language developed?
+a) Kotlin
+b) SmallTalk
+c) Java
+d) C++
+
+Answer: b
+Explanation: SmallTalk was the first programming language developed which was purely object oriented. It was developed by Alan Kay. OOP concept came into the picture in 1970's.
+
+---
+
+3. Which feature of OOP indicates code reusability?
+a) Abstraction
+b) Polymorphism
+c) Encapsulation
+d) Inheritance
+
+Answer: d
+Explanation: Inheritance indicates the code reusability. Encapsulation and abstraction are meant to hide/group data into one element. Polymorphism is to indicate different tasks performed by a single entity.
+
+---
+
+4. Who invented OOP?
+a) Andrea Ferro
+b) Adele Goldberg
+c) Alan Kay
+d) Dennis Ritchie
+
+Answer: c
+Explanation: Alan Kay invented OOP, Andrea Ferro was a part of SmallTalk Development. Dennis invented C++ and Adele Goldberg was in team to develop SmallTalk but Alan actually had got rewarded for OOP.
+
+---
+
+5. Which header file is required in C++ to use OOP?
+a) OOP can be used without using any header file
+b) stdlib.h
+c) iostream.h
+d) stdio.h
+
+Answer: a
+Explanation: We need not include any specific header file to use OOP concept in C++, only specific functions used in code need their respective header files to be included or classes should be defined if needed.
+
+---
+
+6. Why Java is Partially OOP language?
+a) It allows code to be written outside classes
+b) It supports usual declaration of primitive data types
+c) It does not support pointers
+d) It doesn't support all types of inheritance
+
+Answer: b
+Explanation: As Java supports usual declaration of data variables, it is partial implementation of OOP. Because according to rules of OOP, object constructors must be used, even for declaration of variables.
+
+---
+
+7. Which among the following doesn't come under OOP concept?
+a) Data hiding
+b) Message passing
+c) Platform independent
+d) Data binding
+
+Answer: c
+Explanation: Platform independence is not feature of OOP. C++ supports OOP but it's not a platform independent language. Platform independence depends on the programming language.
+
+---
+
+8. Which is the correct syntax of inheritance?
+a) class base_classname :access derived_classname{ /*define class body*/ };
+b) class derived_classname : access base_classname{ /*define class body*/ };
+c) class derived_classname : base_classname{ /*define class body*/ };
+d) class base_classname : derived_classname{ /*define class body*/ };
+
+Answer: b
+Explanation: Firstly, keyword class should come, followed by the derived class name. Colon is must followed by access in which base class has to be derived, followed by the base class name. And finally the body of class. Semicolon after the body is also must.
+
+---
+
+9. Which feature of OOP is indicated by the following code?
+
+```
+class student{  int marks;  };
+class topper:public student{  int age;  topper(int age){ this.age=age; } };
+```
+
+a) Encapsulation and Inheritance
+b) Inheritance and polymorphism
+c) Polymorphism
+d) Inheritance
+
+Answer: a
+Explanation: Encapsulation is indicated by use of classes. Inheritance is shown by inheriting the student class into topper class. Polymorphism is not shown here because we have defined the constructor in the topper class but that doesn't mean that default constructor is overloaded.
+
+---
+
+10. The feature by which one object can interact with another object is _____________
+a) Message reading
+b) Message Passing
+c) Data transfer
+d) Data Binding
+
+Answer: b
+Explanation: The interaction between two object is called the message passing feature. Data transfer is not a feature of OOP. Also, message reading is not a feature of OOP.
+
+---
+
+11. Which among the following, for a pure OOP language, is true?
+a) The language should follow at least 1 feature of OOP
+b) The language must follow only 3 features of OOP
+c) The language must follow all the rules of OOP
+d) The language should follow 3 or more features of OOP
+
+Answer: c
+Explanation: The language must follow all the rules of OOP to be called a purely OOP language. Even if a single OOP feature is not followed, then it's known to be a partially OOP language.
+
+---
+
+12. In multilevel inheritance, which is the most significant feature of OOP used?
+a) Code efficiency
+b) Code readability
+c) Flexibility
+d) Code reusability
+
+Answer: d
+Explanation: The classes using multilevel inheritance will use the code in all the subsequent subclasses if available. Hence the most significant feature among the options given is code reusability. This feature is generally intended to use the data values and reuse the redundant functions.
+
+---
+
+13. What is encapsulation in OOP?
+a) It is a way of combining various data members and member functions that operate on those data members into a single unit
+b) It is a way of combining various data members and member functions into a single unit which can operate on any data
+c) It is a way of combining various data members into a single unit
+d) It is a way of combining various member functions into a single unit
+
+Answer: a
+Explanation: It is a way of combining both data members and member functions, which operate on those data members, into a single unit. We call it a class in OOP generally. This feature have helped us modify the structures used in C language to be upgraded into class in C++ and other languages.
+
+---
+
+14. Which of the following is not true about polymorphism?
+a) Helps in redefining the same functionality
+b) Increases overhead of function definition always
+c) It is feature of OOP
+d) Ease in readability of program
+
+Answer: b
+Explanation: It never increases function definition overhead, one way or another if you don't use polymorphism, you will use the definition in some other way, so it actually helps to write efficient codes.
+
+---
+
+15. What is an abstraction in object-oriented programming?
+a) Hiding the implementation and showing only the features
+b) Hiding the important data
+c) Hiding the implementation
+d) Showing the important data
+
+Answer: a
+Explanation: It includes hiding the implementation part and showing only the required data and features to the user. It is done to hide the implementation complexity and details from the user. And to provide a good interface in programming.
+
+---
+
+16. Which among the following can show polymorphism?
+a) Overloading &&
+b) Overloading 
+c) Overloading ||
+d) Overloading +=
+
+Answer: b
+Explanation: Only insertion operator can be overloaded among all the given options. And the polymorphism can be illustrated here only if any of these is applicable of being overloaded. Overloading is type of polymorphism.
+
+---
+
+17. In which access should a constructor be defined, so that object of the class can be created in any function?
+a) Any access specifier will work
+b) Private
+c) Public
+d) Protected
+
+Answer: c
+Explanation: Constructor function should be available to all the parts of program where the object is to be created. Hence it is advised to define it in public access, so that any other function is able to create objects.
+
+---
+
+18. What happens when an object is passed by reference?
+a) Destructor is called at end of function
+b) Destructor is called when called explicitly
+c) Destructor is not called
+d) Destructor is called when function is out of scope
+
+Answer: c
+Explanation: The destructor is never called in this situation. The concept is that when an object is passed by reference to the function, the constructor is not called, but only the main object will be used. Hence no destructor will be called at end of function.
+
+---
+
+19. Which access specifier is usually used for data members of a class?
+a) Protected
+b) Private
+c) Public
+d) Default
+
+Answer: b
+Explanation: All the data members should be made private to ensure the highest security of data. In special cases we can use public or protected access, but it is advised to keep the data members private always.
+
+---
+
+20. Which feature of OOP reduces the use of nested classes?
+a) Inheritance
+b) Binding
+c) Abstraction
+d) Encapsulation
+
+Answer: a
+Explanation: Using inheritance we can have the security of the class being inherited. The subclass can access the members of parent class. And have more feature than a nested class being used.
+
+---
+
+21. Which keyword among the following can be used to declare an array of objects in java?
+a) allocate
+b) arr
+c) new
+d) create
+
+Answer: c
+Explanation: The keyword new can be used to declare an array of objects in java. The syntax must be specified with an object pointer which is assigned with a memory space containing the required number of object space. Even initialization can be done directly.
+
+---
+
+22. Which of these packages contains abstract keyword?
+a) java.lang
+b) java.util
+c) java.io
+d) java.system
+
+Answer: a
+
+---
+
+23. Which of these is not a correct statement?
+a) Every class containing abstract method must be declared abstract
+b) Abstract class defines only the structure of the class not its implementation
+c) Abstract class can be initiated by new operator
+d) Abstract class can be inherited
+
+Answer: c
+
+---
+
+24. Which of this method of class StringBuffer is used to concatenate the string representation to the end of invoking string?
+a) concat()
+b) append()
+c) join()
+d) concatenate()
+
+Answer: b
+
+---
+
+25. Which of the following are incorrect form of StringBuffer class constructor?
+a) StringBuffer()
+b) StringBuffer(int size)
+c) StringBuffer(String str)
+d) StringBuffer(int size , String str)
+
+Answer: d
+
+---
+
+26. Which of these class is superclass of String and StringBuffer class?
+a) java.util
+b) java.lang
+c) ArrayList
+d) None of the mentioned
+
+Answer: b
+
+---
+
+27. Which of these constructors is used to create an empty String object?
+a) String()
+b) String(void)
+c) String(0)
+d) None of the mentioned
+
+Answer: a
+
+---
+
+28. Which of these is an incorrect statement?
+a) String objects are immutable, they cannot be changed
+b) String object can point to some other reference of String variable
+c) StringBuffer class is used to store string in a buffer for later use
+d) None of the mentioned
+
+Answer: c
+
+---
+
+29. Which of these method of class String is used to compare two String objects for their equality?
+a) equals()
+b) Equals()
+c) isequal()
+d) Isequal()
+
+Answer: a
+
+---
+
+30. Which of these methods is used to compare a specific region inside a string with another specific region in another string?
+a) regionMatch()
+b) match()
+c) RegionMatches()
+d) regionMatches()
+
+Answer: d
+
+---
+
+31. Which of these methods of class String is used to check whether a given object starts with a particular string literal?
+a) startsWith()
+b) endsWith()
+c) Starts()
+d) ends()
+
+Answer: a
+
+---
+
+32. What is the value returned by function compareTo() if the invoking string is less than the string compared?
+a) zero
+b) value less than zero
+c) value greater than zero
+d) none of the mentioned
+
+Answer: b
+
+---
+
+33. Which of these method of class String is used to remove leading and trailing whitespaces?
+a) startsWith()
+b) trim()
+c) Trim()
+d) doTrim()
+
+Answer: b
+
+---
+
+34. What is the value returned by function compareTo() if the invoking string is greater than the string compared?
+a) zero
+b) value less than zero
+c) value greater than zero
+d) none of the mentioned
+
+Answer: c
+
+---
+
+35. At line number 2 in the following code, choose 3 valid data-type attributes/qualifiers among "final, static, native, public, private, abstract, protected"
+
+```
+1. public interface Status
+2.   {
+3.        /* insert qualifier here */ int MY_VALUE = 10;
+4.   }
+```
+
+a) final, native, private
+b) final, static, protected
+c) final, private, abstract
+d) final, static, public
+
+Answer: d
+
+---
+
+36. What will be the output of the following Java program?
+
+```
+   final class A 
+    {
+         int i;
+    }    
+    class B extends A 
+    {
+        int j;
+        System.out.println(j + " " + i);  
+    }    
+    class inheritance 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.display();     
+        }
+   }
+```
+
+a) 2 2
+b) 3 3
+c) Runtime Error
+d) Compilation Error
+
+Answer: d
+
+---
+
+37. What will be the output of the following Java program?
+
+```
+    class A 
+    {
+        int i;
+        public void display() 
+        {
+            System.out.println(i);
+        }    
+    }    
+    class B extends A 
+   {
+        int j;
+        public void display() 
+        {
+            System.out.println(j);
+        } 
+    }    
+    class Dynamic_dispatch 
+   {
+        public static void main(String args[])
+        {
+            B obj2 = new B();
+            obj2.i = 1;
+            obj2.j = 2;
+            A r;
+            r = obj2;
+            r.display();     
+        }
+   }
+```
+
+a) 1
+b) 2
+c) 3
+d) 4
+
+Answer: b
+
+---
+
+38. What will be the output of the following Java program?
+
+```
+    class A 
+    {
+        int i;
+        void display() 
+        {
+            System.out.println(i);
+        }
+    }    
+    class B extends A 
+    {
+        int j;
+        void display() 
+        {
+            System.out.println(j);
+        }
+    }    
+    class inheritance_demo 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.i=1;
+            obj.j=2;   
+            obj.display();     
+        }
+   }
+```
+
+a) 0
+b) 1
+c) 2
+d) Compilation Error
+
+Answer: c
+
+---
+
+39. What will be the output of the following Java program?
+
+```
+    class A 
+    {
+        int i;
+    }    
+    class B extends A 
+    {
+        int j;
+        void display() 
+        {
+            super.i = j + 1;
+            System.out.println(j + " " + i);
+        }
+    }    
+    class inheritance 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.i=1;
+            obj.j=2;   
+            obj.display();     
+        }
+   }
+```
+
+a) 2 2
+b) 3 3
+c) 2 3
+d) 3 2
+
+Answer: c
+
+---
+
+40. What will be the output of the following Java program?
+
+```
+    class A 
+    {
+        public int i;
+        public int j;
+        A() 
+        {
+            i = 1;
+            j = 2;
+	}
+    }    
+    class B extends A 
+    {
+        int a;
+        B() 
+        {
+            super();
+        } 
+    }    
+    class super_use 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            System.out.println(obj.i + " " + obj.j)     
+        }
+   }
+```
+
+a) 1 2
+b) 2 1
+c) Runtime Error
+d) Compilation Error
+
+Answer: a
+
+---
+
+41. What will be the output of the following Java code?
+
+```
+    class A 
+    {
+        public int i;
+        private int j;
+    }    
+    class B extends A 
+    {
+        void display() 
+        {
+            super.j = super.i + 1;
+            System.out.println(super.i + " " + super.j);
+        }
+    }    
+    class inheritance 
+   {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.i=1;
+            obj.j=2;   
+            obj.display();     
+        }
+   }
+```
+
+a) 2 2
+b) 3 3
+c) Runtime Error
+d) Compilation Error
+
+Answer: d
+
+---
+
+42. What will be the output of the following Java program?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        {
+            String a = "hello i love java";
+            System.out.println(a.indexOf('e')+" "+a.indexOf('a')+" "+a.lastIndexOf('l')+" "+a.lastIndexOf('v'));
+        }
+    }
+```
+
+a) 6 4 6 9
+b) 5 4 5 9
+c) 7 8 8 9
+d) 1 14 8 15
+
+Answer: d
+
+---
+
+43. What will be the output of the following Java program?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        { 
+             StringBuffer c = new StringBuffer("Hello");
+             StringBuffer c1 = new StringBuffer(" World");
+             c.append(c1);
+             System.out.println(c);
+        }
+    }
+```
+
+a) Hello
+b) World
+c) Helloworld
+d) Hello World
+
+Answer: d
+
+---
+
+44. What will be the output of the following Java code?
+
+```
+  class output 
+  {  
+      public static void main(String args[]) 
+      {  
+          StringBuffer sb=new StringBuffer("Hello");  
+          sb.replace(1,3,"Java");  
+          System.out.println(sb);
+      }  
+  }
+```
+
+a) Hello java
+b) Hellojava
+c) HJavalo
+d) Hjava
+
+Answer: c
+
+---
+
+45. What will be the output of the following Java code?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        { 
+           StringBuffer s1 = new StringBuffer("Hello");
+           s1.setCharAt(1,'x');
+           System.out.println(s1);
+        }
+    }
+```
+
+a) xello
+b) xxxxx
+c) Hxllo
+d) Hexlo
+
+Answer: c
+
+---
+
+46. What will be the output of the following Java code?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        {
+           StringBuffer s1 = new StringBuffer("Hello World");
+           s1.insert(6 , "Good ");
+           System.out.println(s1);
+        }
+   }
+```
+
+a) HelloGoodWorld
+b) HellGoodoWorld
+c) HellGood oWorld
+d) Hello Good World
+
+Answer: d
+
+---
+
+47. What will be the output of the following Java program?
+
+```
+    class String_demo 
+    {
+        public static void main(String args[])
+        {
+            char chars[] = {'a', 'b', 'c'};
+            String s = new String(chars);
+            System.out.println(s);
+        }
+   }
+```
+
+a) a
+b) b
+c) c
+d) abc
+
+Answer: d
+
+---
+
+48. What will be the output of the following Java code?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        { 
+           String c = "Hello i love java";
+           boolean var;
+           var = c.startsWith("hello");
+           System.out.println(var);
+        }
+    }
+```
+
+a) TRUE
+b) FALSE
+c) 0
+d) 1
+
+Answer: b
+
+---
+
+49. What will be the output of the following Java code?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        { 
+           String s1 = "Hello";
+           String s2 = new String(s1);
+           String s3 = "HELLO";
+           System.out.println(s1.equals(s2) + " " + s2.equals(s3));
+        }
+    }
+```
+
+a) true true
+b) false false
+c) true false
+d) false true
+
+Answer: c
+
+---
+
+50. In the following Java code, which code fragment should be inserted at line 3 so that the output will be: "123abc 123abc"?
+
+```
+ 1. StringBuilder sb1 = new StringBuilder("123");
+ 2. String s1 = "123";
+ 3.  // insert code here
+ 4. System.out.println(sb1 + " " + s1);
+```
+
+a) sb1.append("abc"); s1.append("abc");
+b) sb1.append("abc"); s1.concat("abc");
+c) sb1.concat("abc"); s1.append("abc");
+d) sb1.append("abc"); s1 = s1.concat("abc");
+
+Answer: d
+
+---
+
+51. What will be the output of the following Java code?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        {
+             String chars[] = {"a", "b", "c", "a", "c"};
+             for (int i = 0; i < chars.length; ++i)
+                 for (int j = i + 1; j < chars.length; ++j)
+                     if(chars[i].compareTo(chars[j]) == 0)
+                         System.out.print(chars[j]); 
+        }
+   }
+```
+
+a) ab
+b) bc
+c) ca
+d) ac
+
+Answer: d
+
+---
+
+52. What will be the output of the following Java program?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        { 
+           String c = "  Hello World  ";
+           String s = c.trim();
+           System.out.println("\""+s+"\"");
+        }
+    }
+```
+
+a) ""Hello World""
+b) ""Hello World"
+c) "Hello World"
+d) Hello world
+
+Answer: c
+
+---
+
+53. What will be the output of the following Java program?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        { 
+           String s1 = "Hello";
+           String s2 = s1.replace('l','w');
+           System.out.println(s2);
+        }
+    }
+```
+
+a) hello
+b) helwo
+c) hewlo
+d) hewwo
+
+Answer: d
+
+---
+
+54. What will be the output of the following Java program?
+
+```
+    class output 
+    {
+        public static void main(String args[])
+        {             
+             String s = "Hello World";
+             int i = s.indexOf('o');
+             int j = s.lastIndexOf('l');
+             System.out.print(i + " " + j);
+        }
+   }
+```
+
+a) 4 8
+b) 5 9
+c) 4 9
+d) 5 8
+
+Answer: c
+
+
+
+
+
