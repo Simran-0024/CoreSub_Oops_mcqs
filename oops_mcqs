@@ -1404,3 +1404,927 @@ d) Both are identical in all languages
 
 Answer: c
 Explanation: Classes support data abstraction and other OOP features more strongly, while structures are simpler and generally stored in stack memory.
+
+
+101. What will be the output of the following Java program?
+
+```
+public class Test {
+    public void print(String s) { System.out.print("String"); }
+    public void print(Object o) { System.out.print("Object"); }
+    public static void main(String[] args) {
+        new Test().print(null);
+    }
+}
+```
+
+a) String
+b) Object
+c) Compilation Error
+d) NullPointerException
+
+Answer: a
+Explanation: In method overloading, the compiler chooses the most specific method available. String is more specific than Object, so print(String) is invoked.
+
+---
+
+102. What will be the output of the following snippet?
+
+```
+try {
+    int x = 0;
+    int y = 5 / x;
+} catch (Exception e) {
+    System.out.print("Exception ");
+} catch (ArithmeticException ae) {
+    System.out.print("Arithmetic Exception ");
+}
+```
+
+a) Exception
+b) Arithmetic Exception
+c) Compilation Error
+d) Exception Arithmetic Exception
+
+Answer: c
+Explanation: Compilation error due to unreachable code. ArithmeticException is a subclass of Exception. The broader exception (Exception) catches it first, making the second catch block unreachable.
+
+---
+
+103. What is the result of executing this code?
+
+```
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(returnVal());
+    }
+    static int returnVal() {
+        try {
+            return 1;
+        } finally {
+            return 2;
+        }
+    }
+}
+```
+
+a) 1
+b) 2
+c) Compilation Error
+d) Runtime Exception
+
+Answer: b
+Explanation: The finally block always executes. If both try and finally have return statements, the finally block's return overrides the try block's return.
+
+---
+
+104. What will the following code output?
+
+```
+Integer a = 100, b = 100;
+Integer c = 1000, d = 1000;
+System.out.println((a == b) + " " + (c == d));
+```
+
+a) true true
+b) false false
+c) true false
+d) false true
+
+Answer: c
+Explanation: Java caches Integer objects for values between -128 and 127. So, a and b point to the same object (true). c and d are outside this range, so new objects are created (false).
+
+---
+
+105. What is the output?
+
+```
+class Base {
+    static void display() { System.out.print("Base "); }
+}
+class Derived extends Base {
+    static void display() { System.out.print("Derived "); }
+}
+public class Main {
+    public static void main(String[] args) {
+        Base obj = new Derived();
+        obj.display();
+    }
+}
+```
+
+a) Base
+b) Derived
+c) Compilation Error
+d) Runtime Exception
+
+Answer: a
+Explanation: Static methods cannot be overridden in Java; this is called method hiding. The method called is determined by the reference type (Base), not the object type at runtime.
+
+---
+
+106. Look at the code below. What is the output?
+
+```
+public class Main {
+    static int x = 10;
+    public static void main(String[] args) {
+        Main obj1 = new Main();
+        Main obj2 = new Main();
+        obj1.x = 20;
+        System.out.print(obj2.x);
+    }
+}
+```
+
+a) 10
+b) 20
+c) 0
+d) Compilation Error
+
+Answer: b
+Explanation: x is a static variable, meaning there is only one copy shared among all instances. Changing it via obj1 changes it for obj2 as well.
+
+---
+
+107. What does this snippet evaluate to?
+
+```
+String s1 = "Java";
+String s2 = new String("Java");
+System.out.print((s1 == s2) + " " + (s1.equals(s2)));
+```
+
+a) true true
+b) false true
+c) true false
+d) false false
+
+Answer: b
+Explanation: == compares object references (they are different; s1 is in the string pool, s2 is in heap memory). .equals() compares the actual string values, which are identical.
+
+---
+
+108. What is the output of the following thread-based code?
+
+```
+public class MyThread extends Thread {
+    public void run() { System.out.print("Running "); }
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.run();
+        t.run();
+    }
+}
+```
+
+a) Running
+b) Running Running
+c) IllegalThreadStateException
+d) Compilation Error
+
+Answer: b
+Explanation: Calling run() directly does not start a new thread; it simply executes the method sequentially in the current (main) thread. It can be called multiple times without throwing an exception.
+
+---
+
+109. What will happen when this code runs?
+
+```
+public class Test {
+    public static void main(String[] args) {
+        String str = null;
+        System.out.print(str instanceof String);
+    }
+}
+```
+
+a) true
+b) false
+c) NullPointerException
+d) Compilation Error
+
+Answer: b
+Explanation: The instanceof operator evaluates to false if the left operand is null.
+
+---
+
+110. Identify the output:
+
+```
+class A {
+    A() { System.out.print("A"); }
+}
+class B extends A {
+    B() { System.out.print("B"); }
+}
+class C extends B {
+    C() { System.out.print("C"); }
+    public static void main(String[] args) {
+        C c = new C();
+    }
+}
+```
+
+a) C
+b) CBA
+c) ABC
+d) Compilation Error
+
+Answer: c
+Explanation: Constructors are called from the top of the inheritance hierarchy down to the bottom. A() is called, then B(), then C().
+
+---
+
+111. What is the output of this overridden method scenario?
+
+```
+class Parent {
+    public void show() throws RuntimeException { }
+}
+class Child extends Parent {
+    public void show() throws Exception { }
+}
+```
+
+a) Code compiles successfully
+b) Compilation Error
+c) RuntimeException
+d) Exception
+
+Answer: b
+Explanation: An overriding method in a subclass cannot throw a broader checked exception than the overridden method in the superclass. Exception is broader than RuntimeException (and is checked).
+
+---
+
+112. Evaluate the following set implementation:
+
+```
+Set<String> set = new TreeSet<>();
+set.add("B");
+set.add("A");
+set.add("C");
+System.out.print(set);
+```
+
+a) [B, A, C]
+b) [A, B, C]
+c) [C, B, A]
+d) Runtime Exception
+
+Answer: b
+Explanation: TreeSet stores elements in sorted (natural) order, regardless of the insertion order.
+
+---
+
+113. What happens when you execute this block?
+
+```
+int[] arr = new int[2];
+System.out.print(arr[0]);
+```
+
+a) null
+b) 0
+c) ArrayIndexOutOfBoundsException
+d) Compilation Error
+
+Answer: b
+Explanation: In Java, arrays of primitive types are automatically initialized to their default values (0 for int).
+
+---
+
+114. What is the output?
+
+```
+class Test {
+    public static void main(String args[]) {
+        System.out.print(10 + 20 + "Java");
+        System.out.print("Java" + 10 + 20);
+    }
+}
+```
+
+a) 30Java Java30
+b) 1020Java Java1020
+c) 30Java Java1020
+d) Compilation Error
+
+Answer: c
+Explanation: Evaluation happens from left to right. 10 + 20 resolves to 30, then concatenates. In the second, "Java" + 10 becomes "Java10", which then concatenates with 20.
+
+---
+
+115. Identify the behavior of this code:
+
+```
+public class Demo {
+    static { System.out.print("Static "); }
+    { System.out.print("Instance "); }
+    public Demo() { System.out.print("Constructor "); }
+    public static void main(String[] args) {
+        new Demo();
+    }
+}
+```
+
+a) Static Instance Constructor
+b) Instance Constructor Static
+c) Static Constructor Instance
+d) Constructor Static Instance
+
+Answer: a
+Explanation: Static blocks execute first when the class is loaded. Instance initializer blocks execute next when an object is created. Finally, the constructor runs.
+
+---
+
+116. What is the output of the following lambda expression?
+
+```
+interface Func { int calc(int a); }
+public class Main {
+    public static void main(String[] args) {
+        Func f = (x) -> x * x;
+        System.out.print(f.calc(5));
+    }
+}
+```
+
+a) 10
+b) 25
+c) Compilation Error
+d) RuntimeException
+
+Answer: b
+Explanation: This is a functional interface implementation using a lambda expression. It implements calc to return the square of the parameter.
+
+---
+
+117. What will be printed?
+
+```
+List<Integer> list = Arrays.asList(1, 2, 3);
+list.add(4);
+System.out.print(list.size());
+```
+
+a) 3
+b) 4
+c) UnsupportedOperationException
+d) Compilation Error
+
+Answer: c
+Explanation: Arrays.asList() returns a fixed-size list backed by the specified array. Attempting to add or remove elements throws an UnsupportedOperationException.
+
+---
+
+118. What is the output?
+
+```
+public class Test {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Java");
+        sb.append(new Test());
+    }
+    public String toString() { return "Rocks"; }
+}
+```
+
+a) Java
+b) JavaRocks
+c) Compilation Error
+d) JavaObjectMemoryAddress
+
+Answer: b
+Explanation: When an object is appended to a StringBuilder, its toString() method is called implicitly.
+
+---
+
+119. Observe the interface method:
+
+```
+interface Vehicle {
+    default void print() { System.out.print("Vehicle"); }
+}
+class Car implements Vehicle {
+    public void print() { System.out.print("Car"); }
+}
+```
+
+What is true about Car?
+a) It fails to compile; interfaces cannot have method bodies.
+b) It compiles; Car overrides the default method successfully.
+c) It compiles but cannot execute print().
+d) It causes an ambiguous method call.
+
+Answer: b
+Explanation: Java 8 introduced default methods in interfaces. Implementing classes can override them freely.
+
+---
+
+120. What is the correct definition of a final class?
+a) A class that cannot be instantiated
+b) A class that cannot be inherited
+c) A class whose variables cannot be changed
+d) A class containing only final methods
+
+Answer: b
+Explanation: Declaring a class as final prevents any other class from extending (inheriting) it.
+
+---
+
+121. What happens here?
+
+```
+short s = 10;
+s = s * 5;
+System.out.print(s);
+```
+
+a) 50
+b) Compilation Error
+c) Runtime Exception
+d) 10
+
+Answer: b
+Explanation: The expression s * 5 evaluates to an int (because 5 is an int, and s is promoted). Assigning an int back to a short without an explicit cast causes a compilation error.
+
+---
+
+122. Evaluate the behavior:
+
+```
+public class Main {
+    public static void main(String[] args) {
+        System.out.print(Math.min(Double.MIN_VALUE, 0.0d));
+    }
+}
+```
+
+a) 0.0
+b) A negative value
+c) Compilation Error
+d) Double.MIN_VALUE
+
+Answer: a
+Explanation: Double.MIN_VALUE is a positive number (the smallest positive non-zero value of type double). Therefore, 0.0 is smaller.
+
+---
+
+123. What will this print?
+
+```
+String s = "HELLO";
+s.toLowerCase();
+System.out.print(s);
+```
+
+a) hello
+b) HELLO
+c) Compilation Error
+d) Runtime Exception
+
+Answer: b
+Explanation: Strings are immutable in Java. The toLowerCase() method creates a new string but doesn't modify the original s. Since the result isn't assigned back to s, it remains "HELLO".
+
+---
+
+124. Which collection allows null keys and null values?
+a) Hashtable
+b) TreeMap
+c) HashMap
+d) ConcurrentHashMap
+
+Answer: c
+Explanation: HashMap allows one null key and multiple null values. Hashtable, TreeMap (for keys), and ConcurrentHashMap do not allow nulls.
+
+---
+
+125. Consider the following code snippet:
+
+```
+class X {
+    public void print() { System.out.print("X"); }
+}
+class Y extends X {
+    public void print() { System.out.print("Y"); }
+}
+public class Main {
+    public static void main(String[] args) {
+        X obj = (X) new Y();
+        obj.print();
+    }
+}
+```
+
+a) X
+b) Y
+c) Compilation Error
+d) ClassCastException
+
+Answer: b
+Explanation: Even though the object is cast to X, the underlying actual object instance is of type Y. Polymorphism ensures the overridden method in Y is called at runtime.
+
+---
+
+126. What does this switch statement print?
+
+```
+int x = 2;
+switch(x) {
+    case 1: System.out.print("1");
+    case 2: System.out.print("2");
+    case 3: System.out.print("3");
+    default: System.out.print("4");
+}
+```
+
+a) 2
+b) 234
+c) 23
+d) Compilation Error
+
+Answer: b
+Explanation: Because there are no break statements, execution falls through all subsequent cases after a match is found.
+
+---
+
+127. Which keyword prevents object serialization?
+a) volatile
+b) native
+c) transient
+d) strictfp
+
+Answer: c
+Explanation: The transient keyword marks a variable so it will be skipped when an object is serialized.
+
+---
+
+128. What will the following snippet output?
+
+```
+int a = 5;
+System.out.println(a++ + ++a);
+```
+
+a) 10
+b) 11
+c) 12
+d) 13
+
+Answer: c
+Explanation: a++ returns 5 (then a becomes 6). ++a increments a to 7 and returns 7. 5 + 7 = 12.
+
+---
+
+129. How is a single-element enum used in OOP?
+a) To prevent inheritance
+b) To implement the Singleton design pattern
+c) To create immutable variables
+d) To mock objects in testing
+
+Answer: b
+Explanation: Using a single-element enum is considered the best practice to implement a Singleton pattern in Java, as it provides built-in serialization and thread-safety.
+
+---
+
+130. Observe the interface snippet:
+
+```
+interface A { int x = 10; }
+public class Main implements A {
+    public static void main(String[] args) {
+        x = 20;
+        System.out.print(x);
+    }
+}
+```
+
+a) 10
+b) 20
+c) Compilation Error
+d) Runtime Exception
+
+Answer: c
+Explanation: Variables declared in an interface are implicitly public static final. Therefore, x cannot be reassigned.
+
+---
+
+131. What is the output of the following threading scenario?
+
+```
+Thread t1 = new Thread();
+t1.start();
+t1.start();
+```
+
+a) The thread starts twice.
+b) Compilation Error
+c) IllegalThreadStateException
+d) Deadlock
+
+Answer: c
+Explanation: A thread cannot be started more than once. Calling start() on an already started thread throws IllegalThreadStateException.
+
+---
+
+132. What is the primary purpose of the volatile keyword?
+a) To synchronize method execution
+b) To ensure visibility of variable updates across threads
+c) To prevent variable modification
+d) To mark variables for garbage collection
+
+Answer: b
+Explanation: volatile guarantees that any thread reading a variable will see the most recently written value, avoiding thread-local caching issues.
+
+---
+
+133. What is the output?
+
+```
+public class Demo {
+    public static void main(String[] args) {
+        System.out.print(010);
+    }
+}
+```
+
+a) 10
+b) 010
+c) 8
+d) Compilation Error
+
+Answer: c
+Explanation: Numbers prefixed with a 0 are treated as octal (base 8). Octal 10 is 8 in decimal.
+
+---
+
+134. Which operator cannot be overloaded in Java?
+a) +
+b) ==
+c) ++
+d) None of the above
+
+Answer: d
+Explanation: Java does not support user-defined operator overloading for any operators (though + is overloaded natively for String concatenation).
+
+---
+
+135. What is the output of this code?
+
+```
+Object obj = new Object();
+System.out.print(obj.equals(obj) + " " + (obj == obj));
+```
+
+a) true false
+b) false true
+c) true true
+d) false false
+
+Answer: c
+Explanation: For the default Object class implementation, equals() just uses == internally to compare memory addresses. Both are true for the exact same object.
+
+---
+
+136. What is the output?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        try {
+            throw new NullPointerException("Null");
+        } catch (Exception e) {
+            System.out.print("E ");
+        } finally {
+            System.out.print("F ");
+        }
+    }
+}
+```
+
+a) E F
+b) E
+c) F NullPointerException
+d) Compilation Error
+
+Answer: a
+Explanation: The Exception block catches the NullPointerException (since NPE extends Exception). The finally block executes regardless.
+
+---
+
+137. Which concept is demonstrated when multiple methods have the same name but different arguments?
+a) Encapsulation
+b) Compile-time Polymorphism
+c) Runtime Polymorphism
+d) Data Hiding
+
+Answer: b
+Explanation: Method overloading represents compile-time polymorphism (static binding) because the method to call is determined by the compiler based on argument lists.
+
+---
+
+138. Consider the snippet:
+
+```
+class A {
+    void msg() throws Exception { System.out.print("A"); }
+}
+class B extends A {
+    void msg() { System.out.print("B"); }
+}
+```
+
+a) Compiles successfully
+b) Compilation Error because overriding method must throw Exception
+c) Compilation Error because return types don't match
+d) RuntimeException
+
+Answer: a
+Explanation: A subclass overriding method can choose not to throw any exception, even if the superclass method throws one. It just cannot throw a new or broader checked exception.
+
+---
+
+139. What does the super() call do in a constructor?
+a) Creates an object of the superclass
+b) Invokes the superclass's constructor
+c) Initializes static members of the superclass
+d) Returns a reference to the superclass
+
+Answer: b
+Explanation: super() is used inside a child class constructor to call the parent class's constructor. It must be the first statement in the constructor.
+
+---
+
+140. What is the output?
+
+```
+public class Main {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = x++;
+        int z = ++x;
+        System.out.print(y + " " + z);
+    }
+}
+```
+
+a) 10 11
+b) 10 12
+c) 11 12
+d) 11 11
+
+Answer: b
+Explanation: y = x++ assigns 10 to y and increments x to 11. z = ++x increments x to 12 and assigns 12 to z.
+
+---
+
+141. What is the primary difference between Iterator and ListIterator?
+a) Iterator is fail-fast, ListIterator is not.
+b) ListIterator can only be used with Sets.
+c) ListIterator allows bidirectional traversal; Iterator is unidirectional.
+d) There is no difference.
+
+Answer: c
+Explanation: ListIterator provides methods like hasPrevious() and previous() allowing you to traverse lists backward, which Iterator cannot do.
+
+---
+
+142. Identify the output:
+
+```
+public class Main {
+    static int x = 5;
+    public static void main(String[] args) {
+        Main obj = null;
+        System.out.print(obj.x);
+    }
+}
+```
+
+a) 5
+b) NullPointerException
+c) Compilation Error
+d) 0
+
+Answer: a
+Explanation: Static variables are resolved at compile time based on the class type, not the object instance. Since obj is of type Main, it accesses Main.x without throwing a NullPointerException.
+
+---
+
+143. Which design pattern restricts instantiation to a single object?
+a) Factory
+b) Observer
+c) Prototype
+d) Singleton
+
+Answer: d
+Explanation: The Singleton pattern ensures that a class has only one instance globally and provides a unified point of access to it.
+
+---
+
+144. What happens when a garbage collector destroys an object?
+a) The object's destructor() is called
+b) The object's finalize() method is called
+c) The object's delete() method is called
+d) The program terminates
+
+Answer: b
+Explanation: The JVM calls the finalize() method of an object immediately before garbage collection reclaims its memory. (Note: It is deprecated in newer Java versions, but historically accurate).
+
+---
+
+145. What is the result?
+
+```
+public class Outer {
+    class Inner {
+        void msg() { System.out.print("Inner"); }
+    }
+    public static void main(String[] args) {
+        Outer.Inner in = new Outer().new Inner();
+        in.msg();
+    }
+}
+```
+
+a) Inner
+b) Compilation Error
+c) Runtime Exception
+d) Outer
+
+Answer: a
+Explanation: This is the correct syntax for instantiating a non-static nested (inner) class in Java. An instance of the inner class requires an instance of the outer class.
+
+---
+
+146. Consider the code:
+
+```
+int a = 10, b = 20;
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+System.out.print(a + " " + b);
+```
+
+a) 10 20
+b) 20 10
+c) 0 0
+d) Compilation Error
+
+Answer: b
+Explanation: This is a classic XOR swap algorithm that swaps the values of a and b without using a temporary third variable.
+
+---
+
+147. What represents a "fail-fast" iterator behavior?
+a) It skips over modified elements
+b) It throws ConcurrentModificationException if the collection is modified structurally during iteration
+c) It operates on a cloned collection
+d) It locks the collection against reads
+
+Answer: b
+Explanation: Collections like ArrayList and HashMap use fail-fast iterators that instantly throw a ConcurrentModificationException if the underlying structure is modified by anything other than the iterator itself.
+
+---
+
+148. Identify the valid declaration for a main method:
+a) public void main(String[] args)
+b) static public void main(String... args)
+c) public static int main(String args[])
+d) static void main(String[] args)
+
+Answer: b
+Explanation: The modifiers public and static can be interchanged in order, and String[] args can be replaced with varargs String... args.
+
+---
+
+149. Evaluate the output:
+
+```
+List<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(2);
+list.remove(1);
+System.out.print(list);
+```
+
+a) [2]
+b) [1]
+c) []
+d) IndexOutOfBoundsException
+
+Answer: b
+Explanation: remove(1) treats 1 as the index (primitive int), not the object wrapper. It removes the element at index 1, which is 2. The list retains [1].
+
+---
+
+150. What is the primary use of the super keyword in Java?
+a) To call a child class method
+b) To refer to the immediate parent class instance variable or method
+c) To invoke a static method of the parent class
+d) To break out of a loop
+
+Answer: b
+Explanation: super is a reference variable used to refer to immediate parent class instance variables or methods.
